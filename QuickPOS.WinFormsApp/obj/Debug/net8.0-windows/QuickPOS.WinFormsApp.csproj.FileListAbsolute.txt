@@ -87,3 +87,6 @@ C:\Users\gasan\Downloads\QuickPOS.ConsoleApp\QuickPOS.ConsoleApp\QuickPOS.WinFor
 C:\Users\gasan\Downloads\QuickPOS.ConsoleApp\QuickPOS.ConsoleApp\QuickPOS.WinFormsApp\bin\Debug\net8.0-windows\images\settings.png
 C:\Users\gasan\Downloads\QuickPOS.ConsoleApp\QuickPOS.ConsoleApp\QuickPOS.WinFormsApp\bin\Debug\net8.0-windows\images\users.png
 C:\Users\gasan\Downloads\QuickPOS.ConsoleApp\QuickPOS.ConsoleApp\QuickPOS.WinFormsApp\obj\Debug\net8.0-windows\QuickPOS.WinFormsApp.ClientesForm.resources
+C:\Users\gasan\Downloads\QuickPOS.ConsoleApp\QuickPOS.ConsoleApp\QuickPOS.WinFormsApp\obj\Debug\net8.0-windows\QuickPOS.WinFormsApp.sourcelink.json
+C:\Users\gasan\Downloads\QuickPOS.ConsoleApp\QuickPOS.ConsoleApp\QuickPOS.WinFormsApp\obj\Debug\net8.0-windows\QuickPOS.WinFormsApp.ItemsForm.resources
+C:\Users\gasan\Downloads\QuickPOS.ConsoleApp\QuickPOS.ConsoleApp\QuickPOS.WinFormsApp\bin\Debug\net8.0-windows\images\quicksale.png

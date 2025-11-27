@@ -16,9 +16,14 @@ IFacturaRepository facturaRepo = new FacturaRepository(factory);
 // Services
 var facturaService = new FacturaService(facturaRepo, itemRepo);
 
-// Auth (in-memory por ahora)
-var authService = new AuthService();
+// Crear repositorio de usuarios
+IUsuarioRepository usuarioRepo = new UsuarioRepository(factory);
+
+// Auth usando base de datos
+var authService = new AuthService(usuarioRepo);
+
 var login = new LoginMenu(authService);
+
 
 // Loop principal de login / sesión
 while (true)

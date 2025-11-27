@@ -63,20 +63,42 @@ public class ClienteRepository : IClienteRepository
         return list;
     }
 
-    public void Create(Cliente c)
+    public int Create(Cliente c)
     {
         using var cn = _factory.Create();
         cn.Open();
+        // Si hay NIT, intentar buscar primero
+        if (!string.IsNullOrWhiteSpace(c.NIT))
+        {
+            using var cmdFind = new SqlCommand("SELECT TOP 1 ClienteId FROM dbo.Cliente WHERE NIT = @nit;", cn);
+            cmdFind.Parameters.AddWithValue("@nit", c.NIT);
+            var obj = cmdFind.ExecuteScalar();
+            if (obj != null && obj != DBNull.Value) return Convert.ToInt32(obj);
+        }
 
-        string sql = @"
-            INSERT INTO Cliente(Nombre, NIT)
-            VALUES (@nom, @nit);
-        ";
-
-        using var cmd = new SqlCommand(sql, cn);
-        cmd.Parameters.AddWithValue("@nom", c.Nombre);
+        // Insertar
+        using var cmd = new SqlCommand(@"
+        INSERT INTO dbo.Cliente (Nombre, NIT) VALUES (@nombre, @nit);
+        SELECT CAST(SCOPE_IDENTITY() AS INT);", cn);
+        cmd.Parameters.AddWithValue("@nombre", c.Nombre);
         cmd.Parameters.AddWithValue("@nit", (object?)c.NIT ?? DBNull.Value);
+        var idObj = cmd.ExecuteScalar();
+        return Convert.ToInt32(idObj);
+    }
 
-        cmd.ExecuteNonQuery();
+
+    int IClienteRepository.Create(Cliente c)
+    {
+        throw new NotImplementedException();
+    }
+
+    public void Update(Cliente c)
+    {
+        throw new NotImplementedException();
+    }
+
+    public void Delete(int id)
+    {
+        throw new NotImplementedException();
     }
 }

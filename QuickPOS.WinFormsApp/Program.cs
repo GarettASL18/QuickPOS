@@ -13,6 +13,8 @@ namespace QuickPOS.WinFormsApp
         static void Main()
         {
             ApplicationConfiguration.Initialize();
+
+            // Probar conexión rápida (opcional, deja para debug)
             try
             {
                 using var cn = new Microsoft.Data.SqlClient.SqlConnection(Config.ConnectionString);
@@ -25,7 +27,6 @@ namespace QuickPOS.WinFormsApp
                 Console.WriteLine("Error al abrir conexión: " + ex.Message);
             }
 
-            // Mostrar info (opcional)
             Console.WriteLine("Probando configuración...");
             Console.WriteLine(Config.ConnectionString);
 
@@ -36,11 +37,15 @@ namespace QuickPOS.WinFormsApp
             IClienteRepository clienteRepo = new ClienteRepository(factory);
             IFacturaRepository facturaRepo = new FacturaRepository(factory);
 
-            // Servicios
-            var facturaService = new FacturaService(facturaRepo, itemRepo);
+            // Repositorios nuevos necesarios
+            IUsuarioRepository usuarioRepo = new UsuarioRepository(factory);      // para Auth / Usuarios
+            ISettingRepository settingRepo = new SettingRepository(factory);      // para Config (opcional)
 
-            // Auth (in-memory por ahora)
-            var authService = new AuthService();
+            // Servicios
+            var facturaService = new FacturaService(facturaRepo, itemRepo); // mantengo la firma que tienes ahora
+
+            // AuthService ahora usa BD (UsuarioRepository)
+            var authService = new AuthService(usuarioRepo);
 
             // Login
             using var login = new LoginForm(authService);
@@ -49,8 +54,8 @@ namespace QuickPOS.WinFormsApp
 
             var user = login.AuthenticatedUser;
 
-            // Abrir MainForm con dependencias
-            Application.Run(new MainForm(user, facturaService, clienteRepo, itemRepo));
+            // Abrir MainForm con dependencias (mantengo la firma actual de MainForm)
+            Application.Run(new MainForm(user, facturaService, clienteRepo, itemRepo, usuarioRepo, settingRepo));
         }
     }
 }

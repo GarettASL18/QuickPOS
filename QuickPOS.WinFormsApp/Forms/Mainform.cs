@@ -14,16 +14,27 @@ namespace QuickPOS.WinFormsApp
         private readonly FacturaService _facturaService;
         private readonly IClienteRepository _clienteRepo;
         private readonly IItemRepository _item_repo;
+        private readonly IUsuarioRepository _usuarioRepo;      // <-- nuevo
+        private readonly ISettingRepository _settingRepo;      // <-- nuevo (opcional)
         private FlowLayoutPanel tilesPanel;
 
-        public MainForm(User user, FacturaService facturaService, IClienteRepository clienteRepo, IItemRepository itemRepo)
+        public MainForm(
+            User user,
+            FacturaService facturaService,
+            IClienteRepository clienteRepo,
+            IItemRepository itemRepo,
+            IUsuarioRepository usuarioRepo,        // <-- nuevo parametro
+            ISettingRepository settingRepo)        // <-- nuevo parametro
         {
             _user = user ?? throw new ArgumentNullException(nameof(user));
             _facturaService = facturaService ?? throw new ArgumentNullException(nameof(facturaService));
             _clienteRepo = clienteRepo ?? throw new ArgumentNullException(nameof(clienteRepo));
             _item_repo = itemRepo ?? throw new ArgumentNullException(nameof(itemRepo));
+            _usuarioRepo = usuarioRepo ?? throw new ArgumentNullException(nameof(usuarioRepo));
+            _settingRepo = settingRepo ?? throw new ArgumentNullException(nameof(settingRepo));
             InitializeComponent();
         }
+
 
         void InitializeComponent()
         {
@@ -83,6 +94,11 @@ namespace QuickPOS.WinFormsApp
             AddTile("Clientes", "clients.png", OpenClientes);
             AddTile("Items", "items.png", OpenItems);
             AddTile("Crear Factura", "invoice.png", OpenFacturacion);
+            AddTile("Venta Rápida", "quicksale.png", () => {
+                using var f = new QuickSaleForm(_facturaService, _item_repo, _clienteRepo);
+                f.ShowDialog();
+            });
+
 
             if (IsAdmin())
             {
@@ -181,11 +197,10 @@ namespace QuickPOS.WinFormsApp
 
             tilesPanel.Controls.Add(tile);
         }
-
         void OpenClientes() { using var f = new ClientesForm(_clienteRepo); f.ShowDialog(); }
         void OpenItems() { using var f = new ItemsForm(_item_repo); f.ShowDialog(); }
-        void OpenFacturacion() { using var f = new FacturacionForm(_facturaService, _item_repo); f.ShowDialog(); }
-        void OpenUsuarios() { MessageBox.Show("Gestión de usuarios aún por implementar (se puede hacer en BD).", "Usuarios", MessageBoxButtons.OK, MessageBoxIcon.Information); }
-        void OpenConfiguracion() { MessageBox.Show("Configuración (Impuesto, etc.) pendiente.", "Configuración", MessageBoxButtons.OK, MessageBoxIcon.Information); }
+        void OpenFacturacion() { using var f = new FacturacionForm(_facturaService, _item_repo, _clienteRepo); f.ShowDialog(); }
+        void OpenUsuarios() { using var f = new UsuariosForm(_usuarioRepo); f.ShowDialog(); } // usa el campo inyectado
+        void OpenConfiguracion() { using var f = new ConfigForm(_settingRepo); f.ShowDialog(); } // usa el campo inyectado
     }
 }
