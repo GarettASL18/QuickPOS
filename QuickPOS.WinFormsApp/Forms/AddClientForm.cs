@@ -46,15 +46,58 @@ namespace QuickPOS.WinFormsApp
         {
             try
             {
-                var c = new Cliente { Nombre = txtNombre.Text ?? "", NIT = string.IsNullOrWhiteSpace(txtNIT.Text) ? null : txtNIT.Text };
-                _repo.Create(c);
+                var c = new Cliente
+                {
+                    Nombre = (txtNombre.Text ?? "").Trim(),
+                    NIT = string.IsNullOrWhiteSpace(txtNIT.Text) ? null : txtNIT.Text.Trim()
+                };
+
+                if (string.IsNullOrWhiteSpace(c.Nombre))
+                {
+                    MessageBox.Show("El nombre del cliente es requerido.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                // Llamada flexible a Create: si Create devuelve int, capturamos el id; si no, solo invocamos.
+                var method = _repo.GetType().GetMethod("Create");
+                if (method == null)
+                    throw new InvalidOperationException("El repositorio no implementa Create(Cliente).");
+
+                if (method.ReturnType == typeof(void))
+                {
+                    method.Invoke(_repo, new object[] { c });
+                    MessageBox.Show("Cliente guardado.", "OK", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    DialogResult = DialogResult.OK;
+                    Close();
+                    return;
+                }
+
+                if (method.ReturnType == typeof(int))
+                {
+                    var result = method.Invoke(_repo, new object[] { c });
+                    var newId = Convert.ToInt32(result);
+                    MessageBox.Show($"Cliente creado (Id: {newId}).", "OK", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    DialogResult = DialogResult.OK;
+                    Close();
+                    return;
+                }
+
+                // Si retorna otro tipo, intentar invocar y cerrar
+                method.Invoke(_repo, new object[] { c });
+                MessageBox.Show("Cliente guardado.", "OK", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 DialogResult = DialogResult.OK;
                 Close();
             }
+            catch (System.Reflection.TargetInvocationException tie) when (tie.InnerException != null)
+            {
+                // Mostrar el error real producido en el repositorio, p.ej. violación UNIQUE
+                MessageBox.Show("Error al guardar: " + tie.InnerException.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al guardar: " + ex.Message);
+                MessageBox.Show("Error al guardar: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
     }
 }

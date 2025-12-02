@@ -69,10 +69,10 @@ C:\Users\gasan\Downloads\QuickPOS.ConsoleApp\QuickPOS.ConsoleApp\QuickPOS.Consol
 C:\Users\gasan\Downloads\QuickPOS.ConsoleApp\QuickPOS.ConsoleApp\QuickPOS.ConsoleApp\obj\Debug\net8.0\QuickPOS.ConsoleApp.AssemblyInfoInputs.cache
 C:\Users\gasan\Downloads\QuickPOS.ConsoleApp\QuickPOS.ConsoleApp\QuickPOS.ConsoleApp\obj\Debug\net8.0\QuickPOS.ConsoleApp.AssemblyInfo.cs
 C:\Users\gasan\Downloads\QuickPOS.ConsoleApp\QuickPOS.ConsoleApp\QuickPOS.ConsoleApp\obj\Debug\net8.0\QuickPOS.ConsoleApp.csproj.CoreCompileInputs.cache
+C:\Users\gasan\Downloads\QuickPOS.ConsoleApp\QuickPOS.ConsoleApp\QuickPOS.ConsoleApp\obj\Debug\net8.0\QuickPOS.ConsoleApp.sourcelink.json
 C:\Users\gasan\Downloads\QuickPOS.ConsoleApp\QuickPOS.ConsoleApp\QuickPOS.ConsoleApp\obj\Debug\net8.0\QuickPOS.5E8DCBD0.Up2Date
 C:\Users\gasan\Downloads\QuickPOS.ConsoleApp\QuickPOS.ConsoleApp\QuickPOS.ConsoleApp\obj\Debug\net8.0\QuickPOS.ConsoleApp.dll
 C:\Users\gasan\Downloads\QuickPOS.ConsoleApp\QuickPOS.ConsoleApp\QuickPOS.ConsoleApp\obj\Debug\net8.0\refint\QuickPOS.ConsoleApp.dll
 C:\Users\gasan\Downloads\QuickPOS.ConsoleApp\QuickPOS.ConsoleApp\QuickPOS.ConsoleApp\obj\Debug\net8.0\QuickPOS.ConsoleApp.pdb
 C:\Users\gasan\Downloads\QuickPOS.ConsoleApp\QuickPOS.ConsoleApp\QuickPOS.ConsoleApp\obj\Debug\net8.0\QuickPOS.ConsoleApp.genruntimeconfig.cache
 C:\Users\gasan\Downloads\QuickPOS.ConsoleApp\QuickPOS.ConsoleApp\QuickPOS.ConsoleApp\obj\Debug\net8.0\ref\QuickPOS.ConsoleApp.dll
-C:\Users\gasan\Downloads\QuickPOS.ConsoleApp\QuickPOS.ConsoleApp\QuickPOS.ConsoleApp\obj\Debug\net8.0\QuickPOS.ConsoleApp.sourcelink.json

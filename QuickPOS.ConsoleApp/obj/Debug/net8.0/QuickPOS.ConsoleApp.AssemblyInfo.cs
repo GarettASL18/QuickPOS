@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("QuickPOS.ConsoleApp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+06610e7bf2f80c9308dbd85e54abf1a3b49a9935")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8d9ccf6042675cb9a92042bea1087d9ae1265672")]
 [assembly: System.Reflection.AssemblyProductAttribute("QuickPOS.ConsoleApp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("QuickPOS.ConsoleApp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

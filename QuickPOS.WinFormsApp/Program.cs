@@ -36,8 +36,6 @@ namespace QuickPOS.WinFormsApp
             IItemRepository itemRepo = new ItemRepository(factory);
             IClienteRepository clienteRepo = new ClienteRepository(factory);
             IFacturaRepository facturaRepo = new FacturaRepository(factory);
-
-            // Repositorios nuevos necesarios
             IUsuarioRepository usuarioRepo = new UsuarioRepository(factory);      // para Auth / Usuarios
             ISettingRepository settingRepo = new SettingRepository(factory);      // para Config (opcional)
 

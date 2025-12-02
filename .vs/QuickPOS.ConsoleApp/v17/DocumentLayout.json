@@ -3,96 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\gasan\\Downloads\\QuickPOS.ConsoleApp\\QuickPOS.ConsoleApp\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{36906F78-D2E4-48AE-A045-E2B577EDC35D}|QuickPOS.WinFormsApp\\QuickPOS.WinFormsApp.csproj|c:\\users\\gasan\\downloads\\quickpos.consoleapp\\quickpos.consoleapp\\quickpos.winformsapp\\forms\\configform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{36906F78-D2E4-48AE-A045-E2B577EDC35D}|QuickPOS.WinFormsApp\\QuickPOS.WinFormsApp.csproj|solutionrelative:quickpos.winformsapp\\forms\\configform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{36906F78-D2E4-48AE-A045-E2B577EDC35D}|QuickPOS.WinFormsApp\\QuickPOS.WinFormsApp.csproj|c:\\users\\gasan\\downloads\\quickpos.consoleapp\\quickpos.consoleapp\\quickpos.winformsapp\\forms\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{36906F78-D2E4-48AE-A045-E2B577EDC35D}|QuickPOS.WinFormsApp\\QuickPOS.WinFormsApp.csproj|solutionrelative:quickpos.winformsapp\\forms\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{36906F78-D2E4-48AE-A045-E2B577EDC35D}|QuickPOS.WinFormsApp\\QuickPOS.WinFormsApp.csproj|c:\\users\\gasan\\downloads\\quickpos.consoleapp\\quickpos.consoleapp\\quickpos.winformsapp\\forms\\loginform.resx||{81828910-B8B3-4D2B-99A3-067027C180C1}",
+      "RelativeMoniker": "D:0:0:{36906F78-D2E4-48AE-A045-E2B577EDC35D}|QuickPOS.WinFormsApp\\QuickPOS.WinFormsApp.csproj|solutionrelative:quickpos.winformsapp\\forms\\loginform.resx||{81828910-B8B3-4D2B-99A3-067027C180C1}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{36906F78-D2E4-48AE-A045-E2B577EDC35D}|QuickPOS.WinFormsApp\\QuickPOS.WinFormsApp.csproj|c:\\users\\gasan\\downloads\\quickpos.consoleapp\\quickpos.consoleapp\\quickpos.winformsapp\\forms\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{36906F78-D2E4-48AE-A045-E2B577EDC35D}|QuickPOS.WinFormsApp\\QuickPOS.WinFormsApp.csproj|solutionrelative:quickpos.winformsapp\\forms\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{36906F78-D2E4-48AE-A045-E2B577EDC35D}|QuickPOS.WinFormsApp\\QuickPOS.WinFormsApp.csproj|c:\\users\\gasan\\downloads\\quickpos.consoleapp\\quickpos.consoleapp\\quickpos.winformsapp\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{36906F78-D2E4-48AE-A045-E2B577EDC35D}|QuickPOS.WinFormsApp\\QuickPOS.WinFormsApp.csproj|solutionrelative:quickpos.winformsapp\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8209D131-8649-44B1-9FF5-398B9C5E0674}|QuickPOS.ConsoleApp\\QuickPOS.ConsoleApp.csproj|c:\\users\\gasan\\downloads\\quickpos.consoleapp\\quickpos.consoleapp\\quickpos.consoleapp\\config.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8209D131-8649-44B1-9FF5-398B9C5E0674}|QuickPOS.ConsoleApp\\QuickPOS.ConsoleApp.csproj|solutionrelative:quickpos.consoleapp\\config.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{36906F78-D2E4-48AE-A045-E2B577EDC35D}|QuickPOS.WinFormsApp\\QuickPOS.WinFormsApp.csproj|c:\\users\\gasan\\downloads\\quickpos.consoleapp\\quickpos.consoleapp\\quickpos.winformsapp\\forms\\addeditusuarioform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{36906F78-D2E4-48AE-A045-E2B577EDC35D}|QuickPOS.WinFormsApp\\QuickPOS.WinFormsApp.csproj|solutionrelative:quickpos.winformsapp\\forms\\addeditusuarioform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{36906F78-D2E4-48AE-A045-E2B577EDC35D}|QuickPOS.WinFormsApp\\QuickPOS.WinFormsApp.csproj|c:\\users\\gasan\\downloads\\quickpos.consoleapp\\quickpos.consoleapp\\quickpos.winformsapp\\forms\\usuariosfrom.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{36906F78-D2E4-48AE-A045-E2B577EDC35D}|QuickPOS.WinFormsApp\\QuickPOS.WinFormsApp.csproj|solutionrelative:quickpos.winformsapp\\forms\\usuariosfrom.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{36906F78-D2E4-48AE-A045-E2B577EDC35D}|QuickPOS.WinFormsApp\\QuickPOS.WinFormsApp.csproj|c:\\users\\gasan\\downloads\\quickpos.consoleapp\\quickpos.consoleapp\\quickpos.winformsapp\\forms\\addedititemform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{36906F78-D2E4-48AE-A045-E2B577EDC35D}|QuickPOS.WinFormsApp\\QuickPOS.WinFormsApp.csproj|solutionrelative:quickpos.winformsapp\\forms\\addedititemform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{36906F78-D2E4-48AE-A045-E2B577EDC35D}|QuickPOS.WinFormsApp\\QuickPOS.WinFormsApp.csproj|c:\\users\\gasan\\downloads\\quickpos.consoleapp\\quickpos.consoleapp\\quickpos.winformsapp\\forms\\addclientform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{36906F78-D2E4-48AE-A045-E2B577EDC35D}|QuickPOS.WinFormsApp\\QuickPOS.WinFormsApp.csproj|solutionrelative:quickpos.winformsapp\\forms\\addclientform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8209D131-8649-44B1-9FF5-398B9C5E0674}|QuickPOS.ConsoleApp\\QuickPOS.ConsoleApp.csproj|c:\\users\\gasan\\downloads\\quickpos.consoleapp\\quickpos.consoleapp\\quickpos.consoleapp\\data\\usuariorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8209D131-8649-44B1-9FF5-398B9C5E0674}|QuickPOS.ConsoleApp\\QuickPOS.ConsoleApp.csproj|solutionrelative:quickpos.consoleapp\\data\\usuariorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8209D131-8649-44B1-9FF5-398B9C5E0674}|QuickPOS.ConsoleApp\\QuickPOS.ConsoleApp.csproj|c:\\users\\gasan\\downloads\\quickpos.consoleapp\\quickpos.consoleapp\\quickpos.consoleapp\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8209D131-8649-44B1-9FF5-398B9C5E0674}|QuickPOS.ConsoleApp\\QuickPOS.ConsoleApp.csproj|solutionrelative:quickpos.consoleapp\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8209D131-8649-44B1-9FF5-398B9C5E0674}|QuickPOS.ConsoleApp\\QuickPOS.ConsoleApp.csproj|c:\\users\\gasan\\downloads\\quickpos.consoleapp\\quickpos.consoleapp\\quickpos.consoleapp\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8209D131-8649-44B1-9FF5-398B9C5E0674}|QuickPOS.ConsoleApp\\QuickPOS.ConsoleApp.csproj|solutionrelative:quickpos.consoleapp\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8209D131-8649-44B1-9FF5-398B9C5E0674}|QuickPOS.ConsoleApp\\QuickPOS.ConsoleApp.csproj|c:\\users\\gasan\\downloads\\quickpos.consoleapp\\quickpos.consoleapp\\quickpos.consoleapp\\models\\setting.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8209D131-8649-44B1-9FF5-398B9C5E0674}|QuickPOS.ConsoleApp\\QuickPOS.ConsoleApp.csproj|solutionrelative:quickpos.consoleapp\\models\\setting.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8209D131-8649-44B1-9FF5-398B9C5E0674}|QuickPOS.ConsoleApp\\QuickPOS.ConsoleApp.csproj|c:\\users\\gasan\\downloads\\quickpos.consoleapp\\quickpos.consoleapp\\quickpos.consoleapp\\models\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8209D131-8649-44B1-9FF5-398B9C5E0674}|QuickPOS.ConsoleApp\\QuickPOS.ConsoleApp.csproj|solutionrelative:quickpos.consoleapp\\models\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8209D131-8649-44B1-9FF5-398B9C5E0674}|QuickPOS.ConsoleApp\\QuickPOS.ConsoleApp.csproj|c:\\users\\gasan\\downloads\\quickpos.consoleapp\\quickpos.consoleapp\\quickpos.consoleapp\\data\\settingrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8209D131-8649-44B1-9FF5-398B9C5E0674}|QuickPOS.ConsoleApp\\QuickPOS.ConsoleApp.csproj|solutionrelative:quickpos.consoleapp\\data\\settingrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8209D131-8649-44B1-9FF5-398B9C5E0674}|QuickPOS.ConsoleApp\\QuickPOS.ConsoleApp.csproj|c:\\users\\gasan\\downloads\\quickpos.consoleapp\\quickpos.consoleapp\\quickpos.consoleapp\\data\\isettingsrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8209D131-8649-44B1-9FF5-398B9C5E0674}|QuickPOS.ConsoleApp\\QuickPOS.ConsoleApp.csproj|solutionrelative:quickpos.consoleapp\\data\\isettingsrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8209D131-8649-44B1-9FF5-398B9C5E0674}|QuickPOS.ConsoleApp\\QuickPOS.ConsoleApp.csproj|c:\\users\\gasan\\downloads\\quickpos.consoleapp\\quickpos.consoleapp\\quickpos.consoleapp\\data\\iusuariorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8209D131-8649-44B1-9FF5-398B9C5E0674}|QuickPOS.ConsoleApp\\QuickPOS.ConsoleApp.csproj|solutionrelative:quickpos.consoleapp\\data\\iusuariorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{36906F78-D2E4-48AE-A045-E2B577EDC35D}|QuickPOS.WinFormsApp\\QuickPOS.WinFormsApp.csproj|c:\\users\\gasan\\downloads\\quickpos.consoleapp\\quickpos.consoleapp\\quickpos.winformsapp\\forms\\facturacionform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{36906F78-D2E4-48AE-A045-E2B577EDC35D}|QuickPOS.WinFormsApp\\QuickPOS.WinFormsApp.csproj|solutionrelative:quickpos.winformsapp\\forms\\facturacionform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8209D131-8649-44B1-9FF5-398B9C5E0674}|QuickPOS.ConsoleApp\\QuickPOS.ConsoleApp.csproj|c:\\users\\gasan\\downloads\\quickpos.consoleapp\\quickpos.consoleapp\\quickpos.consoleapp\\data\\clienterepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8209D131-8649-44B1-9FF5-398B9C5E0674}|QuickPOS.ConsoleApp\\QuickPOS.ConsoleApp.csproj|solutionrelative:quickpos.consoleapp\\data\\clienterepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8209D131-8649-44B1-9FF5-398B9C5E0674}|QuickPOS.ConsoleApp\\QuickPOS.ConsoleApp.csproj|c:\\users\\gasan\\downloads\\quickpos.consoleapp\\quickpos.consoleapp\\quickpos.consoleapp\\data\\iclienterepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8209D131-8649-44B1-9FF5-398B9C5E0674}|QuickPOS.ConsoleApp\\QuickPOS.ConsoleApp.csproj|solutionrelative:quickpos.consoleapp\\data\\iclienterepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{36906F78-D2E4-48AE-A045-E2B577EDC35D}|QuickPOS.WinFormsApp\\QuickPOS.WinFormsApp.csproj|c:\\users\\gasan\\downloads\\quickpos.consoleapp\\quickpos.consoleapp\\quickpos.winformsapp\\forms\\quicksaleform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{36906F78-D2E4-48AE-A045-E2B577EDC35D}|QuickPOS.WinFormsApp\\QuickPOS.WinFormsApp.csproj|solutionrelative:quickpos.winformsapp\\forms\\quicksaleform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{36906F78-D2E4-48AE-A045-E2B577EDC35D}|QuickPOS.WinFormsApp\\QuickPOS.WinFormsApp.csproj|c:\\users\\gasan\\downloads\\quickpos.consoleapp\\quickpos.consoleapp\\quickpos.winformsapp\\forms\\itemsform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{36906F78-D2E4-48AE-A045-E2B577EDC35D}|QuickPOS.WinFormsApp\\QuickPOS.WinFormsApp.csproj|solutionrelative:quickpos.winformsapp\\forms\\itemsform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8209D131-8649-44B1-9FF5-398B9C5E0674}|QuickPOS.ConsoleApp\\QuickPOS.ConsoleApp.csproj|c:\\users\\gasan\\downloads\\quickpos.consoleapp\\quickpos.consoleapp\\quickpos.consoleapp\\data\\itemrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8209D131-8649-44B1-9FF5-398B9C5E0674}|QuickPOS.ConsoleApp\\QuickPOS.ConsoleApp.csproj|solutionrelative:quickpos.consoleapp\\data\\itemrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8209D131-8649-44B1-9FF5-398B9C5E0674}|QuickPOS.ConsoleApp\\QuickPOS.ConsoleApp.csproj|c:\\users\\gasan\\downloads\\quickpos.consoleapp\\quickpos.consoleapp\\quickpos.consoleapp\\data\\iitemrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8209D131-8649-44B1-9FF5-398B9C5E0674}|QuickPOS.ConsoleApp\\QuickPOS.ConsoleApp.csproj|solutionrelative:quickpos.consoleapp\\data\\iitemrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{36906F78-D2E4-48AE-A045-E2B577EDC35D}|QuickPOS.WinFormsApp\\QuickPOS.WinFormsApp.csproj|C:\\Users\\gasan\\Downloads\\QuickPOS.ConsoleApp\\QuickPOS.ConsoleApp\\quickpos.winformsapp\\forms\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{36906F78-D2E4-48AE-A045-E2B577EDC35D}|QuickPOS.WinFormsApp\\QuickPOS.WinFormsApp.csproj|solutionrelative:quickpos.winformsapp\\forms\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -102,119 +26,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Config.cs",
-              "DocumentMoniker": "C:\\Users\\gasan\\Downloads\\QuickPOS.ConsoleApp\\QuickPOS.ConsoleApp\\QuickPOS.ConsoleApp\\Config.cs",
-              "RelativeDocumentMoniker": "QuickPOS.ConsoleApp\\Config.cs",
-              "ToolTip": "C:\\Users\\gasan\\Downloads\\QuickPOS.ConsoleApp\\QuickPOS.ConsoleApp\\QuickPOS.ConsoleApp\\Config.cs",
-              "RelativeToolTip": "QuickPOS.ConsoleApp\\Config.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACMAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-27T08:41:25.433Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "ConfigForm.cs",
-              "DocumentMoniker": "C:\\Users\\gasan\\Downloads\\QuickPOS.ConsoleApp\\QuickPOS.ConsoleApp\\QuickPOS.WinFormsApp\\Forms\\ConfigForm.cs",
-              "RelativeDocumentMoniker": "QuickPOS.WinFormsApp\\Forms\\ConfigForm.cs",
-              "ToolTip": "C:\\Users\\gasan\\Downloads\\QuickPOS.ConsoleApp\\QuickPOS.ConsoleApp\\QuickPOS.WinFormsApp\\Forms\\ConfigForm.cs",
-              "RelativeToolTip": "QuickPOS.WinFormsApp\\Forms\\ConfigForm.cs",
-              "ViewState": "AgIAABUAAAAAAAAAAAA1wCQAAAA4AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-27T08:40:42.342Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "AddEditUsuarioForm.cs",
-              "DocumentMoniker": "C:\\Users\\gasan\\Downloads\\QuickPOS.ConsoleApp\\QuickPOS.ConsoleApp\\QuickPOS.WinFormsApp\\Forms\\AddEditUsuarioForm.cs",
-              "RelativeDocumentMoniker": "QuickPOS.WinFormsApp\\Forms\\AddEditUsuarioForm.cs",
-              "ToolTip": "C:\\Users\\gasan\\Downloads\\QuickPOS.ConsoleApp\\QuickPOS.ConsoleApp\\QuickPOS.WinFormsApp\\Forms\\AddEditUsuarioForm.cs",
-              "RelativeToolTip": "QuickPOS.WinFormsApp\\Forms\\AddEditUsuarioForm.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFoAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-27T08:40:10.216Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\gasan\\Downloads\\QuickPOS.ConsoleApp\\QuickPOS.ConsoleApp\\QuickPOS.WinFormsApp\\Program.cs",
-              "RelativeDocumentMoniker": "QuickPOS.WinFormsApp\\Program.cs",
-              "ToolTip": "C:\\Users\\gasan\\Downloads\\QuickPOS.ConsoleApp\\QuickPOS.ConsoleApp\\QuickPOS.WinFormsApp\\Program.cs",
-              "RelativeToolTip": "QuickPOS.WinFormsApp\\Program.cs",
-              "ViewState": "AgIAACAAAAAAAAAAAAAAADoAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-27T08:16:32.131Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Mainform.cs",
-              "DocumentMoniker": "C:\\Users\\gasan\\Downloads\\QuickPOS.ConsoleApp\\QuickPOS.ConsoleApp\\QuickPOS.WinFormsApp\\Forms\\Mainform.cs",
-              "RelativeDocumentMoniker": "QuickPOS.WinFormsApp\\Forms\\Mainform.cs",
-              "ToolTip": "C:\\Users\\gasan\\Downloads\\QuickPOS.ConsoleApp\\QuickPOS.ConsoleApp\\QuickPOS.WinFormsApp\\Forms\\Mainform.cs",
-              "RelativeToolTip": "QuickPOS.WinFormsApp\\Forms\\Mainform.cs",
-              "ViewState": "AgIAALMAAAAAAAAAAAAowM4AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-27T07:12:05.93Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "UsuariosFrom.cs",
-              "DocumentMoniker": "C:\\Users\\gasan\\Downloads\\QuickPOS.ConsoleApp\\QuickPOS.ConsoleApp\\QuickPOS.WinFormsApp\\Forms\\UsuariosFrom.cs",
-              "RelativeDocumentMoniker": "QuickPOS.WinFormsApp\\Forms\\UsuariosFrom.cs",
-              "ToolTip": "C:\\Users\\gasan\\Downloads\\QuickPOS.ConsoleApp\\QuickPOS.ConsoleApp\\QuickPOS.WinFormsApp\\Forms\\UsuariosFrom.cs",
-              "RelativeToolTip": "QuickPOS.WinFormsApp\\Forms\\UsuariosFrom.cs",
-              "ViewState": "AgIAAC0AAAAAAAAAAAAYwF4AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-27T08:38:43.886Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "AddClientForm.cs",
-              "DocumentMoniker": "C:\\Users\\gasan\\Downloads\\QuickPOS.ConsoleApp\\QuickPOS.ConsoleApp\\QuickPOS.WinFormsApp\\Forms\\AddClientForm.cs",
-              "RelativeDocumentMoniker": "QuickPOS.WinFormsApp\\Forms\\AddClientForm.cs",
-              "ToolTip": "C:\\Users\\gasan\\Downloads\\QuickPOS.ConsoleApp\\QuickPOS.ConsoleApp\\QuickPOS.WinFormsApp\\Forms\\AddClientForm.cs",
-              "RelativeToolTip": "QuickPOS.WinFormsApp\\Forms\\AddClientForm.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-27T08:32:46.579Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\gasan\\Downloads\\QuickPOS.ConsoleApp\\QuickPOS.ConsoleApp\\QuickPOS.ConsoleApp\\Program.cs",
-              "RelativeDocumentMoniker": "QuickPOS.ConsoleApp\\Program.cs",
-              "ToolTip": "C:\\Users\\gasan\\Downloads\\QuickPOS.ConsoleApp\\QuickPOS.ConsoleApp\\QuickPOS.ConsoleApp\\Program.cs",
-              "RelativeToolTip": "QuickPOS.ConsoleApp\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAWAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-27T08:15:36.267Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
             },
             {
               "$type": "Bookmark",
@@ -222,198 +38,51 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "AddEditItemForm.cs",
-              "DocumentMoniker": "C:\\Users\\gasan\\Downloads\\QuickPOS.ConsoleApp\\QuickPOS.ConsoleApp\\QuickPOS.WinFormsApp\\Forms\\AddEditItemForm.cs",
-              "RelativeDocumentMoniker": "QuickPOS.WinFormsApp\\Forms\\AddEditItemForm.cs",
-              "ToolTip": "C:\\Users\\gasan\\Downloads\\QuickPOS.ConsoleApp\\QuickPOS.ConsoleApp\\QuickPOS.WinFormsApp\\Forms\\AddEditItemForm.cs",
-              "RelativeToolTip": "QuickPOS.WinFormsApp\\Forms\\AddEditItemForm.cs",
-              "ViewState": "AgIAADkAAAAAAAAAAAAYwAYAAAABAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "LoginForm.cs",
+              "DocumentMoniker": "C:\\Users\\gasan\\Downloads\\QuickPOS.ConsoleApp\\QuickPOS.ConsoleApp\\QuickPOS.WinFormsApp\\Forms\\LoginForm.cs",
+              "RelativeDocumentMoniker": "QuickPOS.WinFormsApp\\Forms\\LoginForm.cs",
+              "ToolTip": "C:\\Users\\gasan\\Downloads\\QuickPOS.ConsoleApp\\QuickPOS.ConsoleApp\\QuickPOS.WinFormsApp\\Forms\\LoginForm.cs",
+              "RelativeToolTip": "QuickPOS.WinFormsApp\\Forms\\LoginForm.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-27T06:44:41.479Z",
+              "WhenOpened": "2025-12-01T23:49:21.739Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "AuthService.cs",
-              "DocumentMoniker": "C:\\Users\\gasan\\Downloads\\QuickPOS.ConsoleApp\\QuickPOS.ConsoleApp\\QuickPOS.ConsoleApp\\Services\\AuthService.cs",
-              "RelativeDocumentMoniker": "QuickPOS.ConsoleApp\\Services\\AuthService.cs",
-              "ToolTip": "C:\\Users\\gasan\\Downloads\\QuickPOS.ConsoleApp\\QuickPOS.ConsoleApp\\QuickPOS.ConsoleApp\\Services\\AuthService.cs",
-              "RelativeToolTip": "QuickPOS.ConsoleApp\\Services\\AuthService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-27T08:14:51.463Z",
+              "DocumentIndex": 1,
+              "Title": "LoginForm.resx",
+              "DocumentMoniker": "C:\\Users\\gasan\\Downloads\\QuickPOS.ConsoleApp\\QuickPOS.ConsoleApp\\QuickPOS.WinFormsApp\\Forms\\LoginForm.resx",
+              "RelativeDocumentMoniker": "QuickPOS.WinFormsApp\\Forms\\LoginForm.resx",
+              "ToolTip": "C:\\Users\\gasan\\Downloads\\QuickPOS.ConsoleApp\\QuickPOS.ConsoleApp\\QuickPOS.WinFormsApp\\Forms\\LoginForm.resx",
+              "RelativeToolTip": "QuickPOS.WinFormsApp\\Forms\\LoginForm.resx",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001005|",
+              "WhenOpened": "2025-12-01T23:38:37.033Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "Setting.cs",
-              "DocumentMoniker": "C:\\Users\\gasan\\Downloads\\QuickPOS.ConsoleApp\\QuickPOS.ConsoleApp\\QuickPOS.ConsoleApp\\Models\\Setting.cs",
-              "RelativeDocumentMoniker": "QuickPOS.ConsoleApp\\Models\\Setting.cs",
-              "ToolTip": "C:\\Users\\gasan\\Downloads\\QuickPOS.ConsoleApp\\QuickPOS.ConsoleApp\\QuickPOS.ConsoleApp\\Models\\Setting.cs",
-              "RelativeToolTip": "QuickPOS.ConsoleApp\\Models\\Setting.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 3,
+              "Title": "Mainform.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\gasan\\Downloads\\QuickPOS.ConsoleApp\\QuickPOS.ConsoleApp\\QuickPOS.WinFormsApp\\Forms\\Mainform.cs",
+              "RelativeDocumentMoniker": "QuickPOS.WinFormsApp\\Forms\\Mainform.cs",
+              "ToolTip": "C:\\Users\\gasan\\Downloads\\QuickPOS.ConsoleApp\\QuickPOS.ConsoleApp\\QuickPOS.WinFormsApp\\Forms\\Mainform.cs [Dise\u00F1o]",
+              "RelativeToolTip": "QuickPOS.WinFormsApp\\Forms\\Mainform.cs [Dise\u00F1o]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-27T08:02:02.229Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-01T23:34:56.306Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "UsuarioRepository.cs",
-              "DocumentMoniker": "C:\\Users\\gasan\\Downloads\\QuickPOS.ConsoleApp\\QuickPOS.ConsoleApp\\QuickPOS.ConsoleApp\\Data\\UsuarioRepository.cs",
-              "RelativeDocumentMoniker": "QuickPOS.ConsoleApp\\Data\\UsuarioRepository.cs",
-              "ToolTip": "C:\\Users\\gasan\\Downloads\\QuickPOS.ConsoleApp\\QuickPOS.ConsoleApp\\QuickPOS.ConsoleApp\\Data\\UsuarioRepository.cs",
-              "RelativeToolTip": "QuickPOS.ConsoleApp\\Data\\UsuarioRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAWAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "Mainform.cs",
+              "DocumentMoniker": "C:\\Users\\gasan\\Downloads\\QuickPOS.ConsoleApp\\QuickPOS.ConsoleApp\\QuickPOS.WinFormsApp\\Forms\\Mainform.cs",
+              "RelativeDocumentMoniker": "QuickPOS.WinFormsApp\\Forms\\Mainform.cs",
+              "ToolTip": "C:\\Users\\gasan\\Downloads\\QuickPOS.ConsoleApp\\QuickPOS.ConsoleApp\\QuickPOS.WinFormsApp\\Forms\\Mainform.cs",
+              "RelativeToolTip": "QuickPOS.WinFormsApp\\Forms\\Mainform.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAAAAwCIAAAAiAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-27T07:58:53.592Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "Usuario.cs",
-              "DocumentMoniker": "C:\\Users\\gasan\\Downloads\\QuickPOS.ConsoleApp\\QuickPOS.ConsoleApp\\QuickPOS.ConsoleApp\\Models\\Usuario.cs",
-              "RelativeDocumentMoniker": "QuickPOS.ConsoleApp\\Models\\Usuario.cs",
-              "ToolTip": "C:\\Users\\gasan\\Downloads\\QuickPOS.ConsoleApp\\QuickPOS.ConsoleApp\\QuickPOS.ConsoleApp\\Models\\Usuario.cs",
-              "RelativeToolTip": "QuickPOS.ConsoleApp\\Models\\Usuario.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-27T08:01:18.306Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "SettingRepository.cs",
-              "DocumentMoniker": "C:\\Users\\gasan\\Downloads\\QuickPOS.ConsoleApp\\QuickPOS.ConsoleApp\\QuickPOS.ConsoleApp\\Data\\SettingRepository.cs",
-              "RelativeDocumentMoniker": "QuickPOS.ConsoleApp\\Data\\SettingRepository.cs",
-              "ToolTip": "C:\\Users\\gasan\\Downloads\\QuickPOS.ConsoleApp\\QuickPOS.ConsoleApp\\QuickPOS.ConsoleApp\\Data\\SettingRepository.cs",
-              "RelativeToolTip": "QuickPOS.ConsoleApp\\Data\\SettingRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACsAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-27T07:59:19.225Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "ISettingsRepository.cs",
-              "DocumentMoniker": "C:\\Users\\gasan\\Downloads\\QuickPOS.ConsoleApp\\QuickPOS.ConsoleApp\\QuickPOS.ConsoleApp\\Data\\ISettingsRepository.cs",
-              "RelativeDocumentMoniker": "QuickPOS.ConsoleApp\\Data\\ISettingsRepository.cs",
-              "ToolTip": "C:\\Users\\gasan\\Downloads\\QuickPOS.ConsoleApp\\QuickPOS.ConsoleApp\\QuickPOS.ConsoleApp\\Data\\ISettingsRepository.cs",
-              "RelativeToolTip": "QuickPOS.ConsoleApp\\Data\\ISettingsRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-27T07:58:23.149Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "IUsuarioRepository.cs",
-              "DocumentMoniker": "C:\\Users\\gasan\\Downloads\\QuickPOS.ConsoleApp\\QuickPOS.ConsoleApp\\QuickPOS.ConsoleApp\\Data\\IUsuarioRepository.cs",
-              "RelativeDocumentMoniker": "QuickPOS.ConsoleApp\\Data\\IUsuarioRepository.cs",
-              "ToolTip": "C:\\Users\\gasan\\Downloads\\QuickPOS.ConsoleApp\\QuickPOS.ConsoleApp\\QuickPOS.ConsoleApp\\Data\\IUsuarioRepository.cs",
-              "RelativeToolTip": "QuickPOS.ConsoleApp\\Data\\IUsuarioRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-27T07:57:06.794Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "FacturacionForm.cs",
-              "DocumentMoniker": "C:\\Users\\gasan\\Downloads\\QuickPOS.ConsoleApp\\QuickPOS.ConsoleApp\\QuickPOS.WinFormsApp\\Forms\\FacturacionForm.cs",
-              "RelativeDocumentMoniker": "QuickPOS.WinFormsApp\\Forms\\FacturacionForm.cs",
-              "ToolTip": "C:\\Users\\gasan\\Downloads\\QuickPOS.ConsoleApp\\QuickPOS.ConsoleApp\\QuickPOS.WinFormsApp\\Forms\\FacturacionForm.cs",
-              "RelativeToolTip": "QuickPOS.WinFormsApp\\Forms\\FacturacionForm.cs",
-              "ViewState": "AgIAAAUBAAAAAAAAAADwv3MAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-25T08:54:48.25Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "IClienteRepository.cs",
-              "DocumentMoniker": "C:\\Users\\gasan\\Downloads\\QuickPOS.ConsoleApp\\QuickPOS.ConsoleApp\\QuickPOS.ConsoleApp\\Data\\IClienteRepository.cs",
-              "RelativeDocumentMoniker": "QuickPOS.ConsoleApp\\Data\\IClienteRepository.cs",
-              "ToolTip": "C:\\Users\\gasan\\Downloads\\QuickPOS.ConsoleApp\\QuickPOS.ConsoleApp\\QuickPOS.ConsoleApp\\Data\\IClienteRepository.cs",
-              "RelativeToolTip": "QuickPOS.ConsoleApp\\Data\\IClienteRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-27T07:20:03.784Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "ClienteRepository.cs",
-              "DocumentMoniker": "C:\\Users\\gasan\\Downloads\\QuickPOS.ConsoleApp\\QuickPOS.ConsoleApp\\QuickPOS.ConsoleApp\\Data\\ClienteRepository.cs",
-              "RelativeDocumentMoniker": "QuickPOS.ConsoleApp\\Data\\ClienteRepository.cs",
-              "ToolTip": "C:\\Users\\gasan\\Downloads\\QuickPOS.ConsoleApp\\QuickPOS.ConsoleApp\\QuickPOS.ConsoleApp\\Data\\ClienteRepository.cs",
-              "RelativeToolTip": "QuickPOS.ConsoleApp\\Data\\ClienteRepository.cs",
-              "ViewState": "AgIAAEMAAAAAAAAAAAAkwFcAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-27T07:22:15.025Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "QuickSaleForm.cs",
-              "DocumentMoniker": "C:\\Users\\gasan\\Downloads\\QuickPOS.ConsoleApp\\QuickPOS.ConsoleApp\\QuickPOS.WinFormsApp\\Forms\\QuickSaleForm.cs",
-              "RelativeDocumentMoniker": "QuickPOS.WinFormsApp\\Forms\\QuickSaleForm.cs",
-              "ToolTip": "C:\\Users\\gasan\\Downloads\\QuickPOS.ConsoleApp\\QuickPOS.ConsoleApp\\QuickPOS.WinFormsApp\\Forms\\QuickSaleForm.cs",
-              "RelativeToolTip": "QuickPOS.WinFormsApp\\Forms\\QuickSaleForm.cs",
-              "ViewState": "AgIAAIsAAAAAAAAAAAAkwLwAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-27T07:08:34.303Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 20,
-              "Title": "ItemsForm.cs",
-              "DocumentMoniker": "C:\\Users\\gasan\\Downloads\\QuickPOS.ConsoleApp\\QuickPOS.ConsoleApp\\QuickPOS.WinFormsApp\\Forms\\ItemsForm.cs",
-              "RelativeDocumentMoniker": "QuickPOS.WinFormsApp\\Forms\\ItemsForm.cs",
-              "ToolTip": "C:\\Users\\gasan\\Downloads\\QuickPOS.ConsoleApp\\QuickPOS.ConsoleApp\\QuickPOS.WinFormsApp\\Forms\\ItemsForm.cs",
-              "RelativeToolTip": "QuickPOS.WinFormsApp\\Forms\\ItemsForm.cs",
-              "ViewState": "AgIAADYAAAAAAAAAAAAAwGkAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-27T06:35:03.798Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 21,
-              "Title": "ItemRepository.cs",
-              "DocumentMoniker": "C:\\Users\\gasan\\Downloads\\QuickPOS.ConsoleApp\\QuickPOS.ConsoleApp\\QuickPOS.ConsoleApp\\Data\\ItemRepository.cs",
-              "RelativeDocumentMoniker": "QuickPOS.ConsoleApp\\Data\\ItemRepository.cs",
-              "ToolTip": "C:\\Users\\gasan\\Downloads\\QuickPOS.ConsoleApp\\QuickPOS.ConsoleApp\\QuickPOS.ConsoleApp\\Data\\ItemRepository.cs",
-              "RelativeToolTip": "QuickPOS.ConsoleApp\\Data\\ItemRepository.cs",
-              "ViewState": "AgIAACcAAAAAAAAAAAAYwIsAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-27T06:26:06.992Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 22,
-              "Title": "IItemRepository.cs",
-              "DocumentMoniker": "C:\\Users\\gasan\\Downloads\\QuickPOS.ConsoleApp\\QuickPOS.ConsoleApp\\QuickPOS.ConsoleApp\\Data\\IItemRepository.cs",
-              "RelativeDocumentMoniker": "QuickPOS.ConsoleApp\\Data\\IItemRepository.cs",
-              "ToolTip": "C:\\Users\\gasan\\Downloads\\QuickPOS.ConsoleApp\\QuickPOS.ConsoleApp\\QuickPOS.ConsoleApp\\Data\\IItemRepository.cs",
-              "RelativeToolTip": "QuickPOS.ConsoleApp\\Data\\IItemRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-27T06:25:13.934Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-01T23:25:37.988Z"
             }
           ]
         }
