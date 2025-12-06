@@ -2,298 +2,218 @@
 using QuickPOS.Models;
 using QuickPOS.Services;
 using System;
-using System.ComponentModel;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
+using QuickPOS.WinFormsApp.Forms;
 
 namespace QuickPOS.WinFormsApp
 {
-    // ahora partial: la parte UI estará en MainForm.Designer.cs
     public partial class MainForm : Form
     {
-        // Dependencias (inyectadas en runtime). Nullable para permitir constructor parameterless (designer).
         private User? _user;
         private FacturaService? _facturaService;
         private IClienteRepository? _clienteRepo;
-        private IItemRepository? _item_repo;
+        private IItemRepository? _itemRepo;
         private IUsuarioRepository? _usuarioRepo;
         private ISettingRepository? _settingRepo;
+        private IFacturaRepository? _facturaRepo;
 
-        // Constructor parameterless para que el Designer pueda instanciar la clase.
+        public bool IsLogout { get; private set; } = false;
+        private Button? _currentButton;
+        private readonly Color _activeColor = Color.FromArgb(70, 100, 180);
+        private readonly Color _hoverColor = Color.FromArgb(40, 50, 100);
+        private readonly Color _defaultColor = Color.MidnightBlue;
+
         public MainForm()
         {
             InitializeComponent();
-
-            // Solo en modo diseño: crear tiles de vista previa y forzar layout
-            if (LicenseManager.UsageMode == LicenseUsageMode.Designtime)
-            {
-             
-                // asegurar propiedades que ayudan al layout en diseñador
-                if (tilesPanel != null)
-                {
-                    tilesPanel.WrapContents = true;
-                    tilesPanel.FlowDirection = FlowDirection.LeftToRight;
-                    CreateDesignTimeTiles_WithLayout();
-                }
-            }
+            SetupButtonLogic();
+            StartClock();
         }
 
-        // Constructor real con DI — llama al ctor parameterless para que InitializeComponent ya haya corrido.
         public MainForm(
             User user,
             FacturaService facturaService,
             IClienteRepository clienteRepo,
             IItemRepository itemRepo,
             IUsuarioRepository usuarioRepo,
-            ISettingRepository settingRepo) : this()
+            ISettingRepository settingRepo,
+            IFacturaRepository facturaRepo) : this()
         {
-            // Asignar dependencias
             _user = user ?? throw new ArgumentNullException(nameof(user));
             _facturaService = facturaService ?? throw new ArgumentNullException(nameof(facturaService));
             _clienteRepo = clienteRepo ?? throw new ArgumentNullException(nameof(clienteRepo));
-            _item_repo = itemRepo ?? throw new ArgumentNullException(nameof(itemRepo));
+            _itemRepo = itemRepo ?? throw new ArgumentNullException(nameof(itemRepo));
             _usuarioRepo = usuarioRepo ?? throw new ArgumentNullException(nameof(usuarioRepo));
             _settingRepo = settingRepo ?? throw new ArgumentNullException(nameof(settingRepo));
-
-            // Ahora que InitializeComponent ya corrió, actualizamos UI dependiente de runtime
-            Text = $"QuickPOS - {_user.Username} ({_user.Role})";
-            if (lblUser != null)
-                lblUser.Text = $"Usuario: {_user.Username}   Rol: {_user.Role}";
+            _facturaRepo = facturaRepo ?? throw new ArgumentNullException(nameof(facturaRepo));
         }
 
-        // OnLoad: ejecutar BuildTiles sólo en runtime (evita que el diseñador lo intente)
-        protected override void OnLoad(EventArgs e)
+        private void MainForm_Load(object sender, EventArgs e)
         {
-            base.OnLoad(e);
-
-            if (LicenseManager.UsageMode == LicenseUsageMode.Runtime)
+            if (_user != null)
             {
-                BuildTiles();
+                lblUserInfo.Text = $"Usuario: {_user.Username} | Rol: {_user.Role}";
+                lblUserInfo.Top = (pnlHeader.Height - lblUserInfo.Height) / 2;
+
+                if (!IsAdmin())
+                {
+                    btnUsuarios.Visible = false;
+                    btnConfig.Visible = false;
+                    string permisoHistorial = _settingRepo?.Get("Permiso_VerHistorial") ?? "False";
+                    btnHistorial.Visible = (permisoHistorial == "True");
+                }
+
+                FixLabelSizing(label2);
+                FixLabelSizing(label3);
+                FixLabelSizing(label5);
+                FixLabelSizing(label7);
+
+                LoadDashboardData();
             }
         }
 
-        // BuildTiles: crea los tiles visuales y los añade a tilesPanel.
-        // Se ejecuta solo en runtime, cuando las dependencias están disponibles.
-        private void BuildTiles()
+        private void LoadDashboardData()
         {
-            if (_facturaService == null || _item_repo == null || _clienteRepo == null)
-            {
-                // Si por alguna razón no están las dependencias, no crear tiles (evitar NRE).
-                return;
-            }
-
-            tilesPanel.Controls.Clear();
-
-            AddTile("Clientes", "clients.png", OpenClientes);
-            AddTile("Items", "items.png", OpenItems);
-            AddTile("Crear Factura", "invoice.png", OpenFacturacion);
-            AddTile("Venta Rápida", "quicksale.png", () =>
-            {
-                using var f = new QuickSaleForm(_facturaService, _item_repo, _clienteRepo);
-                f.ShowDialog();
-            });
-
-            if (IsAdmin())
-            {
-                AddTile("Usuarios", "users.png", OpenUsuarios);
-                AddTile("Configuración", "settings.png", OpenConfiguracion);
-            }
-        }
-
-        private void BtnLogout_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
-        bool IsAdmin()
-        {
-            return _user != null && _user.Role.Equals("Admin", StringComparison.OrdinalIgnoreCase);
-        }
-
-        void AddTile(string title, string imageFileName, Action onClick)
-        {
-            // Tile container
-            var tile = new Panel
-            {
-                Width = 220,
-                Height = 170,
-                Margin = new Padding(12),
-                BackColor = Color.White,
-                BorderStyle = BorderStyle.FixedSingle
-            };
-
-            // Table layout to keep image area fixed and label below
-            var table = new TableLayoutPanel
-            {
-                Dock = DockStyle.Fill,
-                RowCount = 2,
-                ColumnCount = 1
-            };
-            table.RowStyles.Add(new RowStyle(SizeType.Absolute, 110)); // espacio para la imagen
-            table.RowStyles.Add(new RowStyle(SizeType.Percent, 100));
-
-            // PictureBox inside a panel to center it
-            var pic = new PictureBox
-            {
-                Size = new Size(160, 90),
-                SizeMode = PictureBoxSizeMode.Zoom,
-                Anchor = AnchorStyles.None,
-                Margin = new Padding(0)
-            };
-
-            var picPanel = new Panel { Dock = DockStyle.Fill, BackColor = Color.Transparent };
-            picPanel.Controls.Add(pic);
-            pic.Location = new Point((picPanel.Width - pic.Width) / 2, (picPanel.Height - pic.Height) / 2);
-            picPanel.Resize += (_, __) =>
-            {
-                pic.Location = new Point(Math.Max(0, (picPanel.Width - pic.Width) / 2), Math.Max(0, (picPanel.Height - pic.Height) / 2));
-            };
-
-            // Load image robustly from images folder in output
             try
             {
-                var imgPath = System.IO.Path.Combine(Application.StartupPath, "images", imageFileName);
-                if (System.IO.File.Exists(imgPath))
+                if (_clienteRepo != null) label5.Text = _clienteRepo.GetAll().Count.ToString();
+                if (_itemRepo != null) label7.Text = _itemRepo.GetAll().Count.ToString();
+                if (_facturaRepo != null) label3.Text = _facturaRepo.GetAll().Count.ToString();
+
+                if (_facturaRepo != null)
                 {
-                    using var tmp = Image.FromFile(imgPath);
-                    pic.Image = new Bitmap(tmp); // avoid locking file
-                }
-                else
-                {
-                    pic.Image = null;
+                    decimal totalHoy = _facturaRepo.GetTotalVentasHoy();
+                    label2.Text = totalHoy.ToString("C2");
                 }
             }
-            catch
-            {
-                pic.Image = null;
-            }
-
-            table.Controls.Add(picPanel, 0, 0);
-
-            var lbl = new Label
-            {
-                Text = title,
-                Dock = DockStyle.Fill,
-                TextAlign = ContentAlignment.MiddleCenter,
-                Font = new Font("Segoe UI", 10, FontStyle.Bold),
-                BackColor = Color.Transparent
-            };
-            table.Controls.Add(lbl, 0, 1);
-
-            tile.Controls.Add(table);
-
-            // Click handlers for whole tile
-            tile.Cursor = Cursors.Hand;
-            void invoke() { try { onClick(); } catch (Exception ex) { MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); } }
-            tile.Click += (_, __) => invoke();
-            pic.Click += (_, __) => invoke();
-            lbl.Click += (_, __) => invoke();
-
-            tilesPanel.Controls.Add(tile);
+            catch { }
         }
 
-        void OpenClientes()
+        private void FixLabelSizing(Label lbl)
+        {
+            if (lbl != null)
+            {
+                lbl.AutoSize = false;
+                lbl.Dock = DockStyle.Bottom;
+                lbl.Height = 45;
+                lbl.TextAlign = ContentAlignment.MiddleRight;
+                lbl.AutoEllipsis = true;
+            }
+        }
+
+        private void SetupButtonLogic()
+        {
+            btnVenta.Click += OpenFacturacion;
+            btnHistorial.Click += OpenHistorial;
+            btnClientes.Click += OpenClientes;
+            btnProductos.Click += OpenItems;
+            btnUsuarios.Click += OpenUsuarios;
+            btnConfig.Click += OpenConfiguracion;
+            btnSalir.Click += Logout;
+
+            ConfigureButton(btnVenta);
+            ConfigureButton(btnHistorial);
+            ConfigureButton(btnClientes);
+            ConfigureButton(btnProductos);
+            ConfigureButton(btnUsuarios);
+            ConfigureButton(btnConfig);
+            ConfigureButton(btnSalir);
+        }
+
+        private void ConfigureButton(Button btn)
+        {
+            btn.BackColor = _defaultColor;
+            btn.MouseEnter += (s, e) => { if (_currentButton != btn) { btn.BackColor = _hoverColor; btn.Cursor = Cursors.Hand; } };
+            btn.MouseLeave += (s, e) => { if (_currentButton != btn) { btn.BackColor = _defaultColor; btn.Cursor = Cursors.Default; } };
+            btn.Click += (s, e) => ActivateButton(btn);
+        }
+
+        private void ActivateButton(Button btnSender)
+        {
+            if (btnSender == null) return;
+            if (_currentButton != null) _currentButton.BackColor = _defaultColor;
+            _currentButton = btnSender;
+            _currentButton.BackColor = _activeColor;
+        }
+
+        private bool IsAdmin() => _user != null && _user.Role.Equals("Admin", StringComparison.OrdinalIgnoreCase);
+
+        // --- NAVEGACIÓN ---
+
+        private void OpenFacturacion(object? sender, EventArgs e)
+        {
+            if (_facturaService == null) return;
+            using var f = new FacturacionForm(_facturaService, _itemRepo, _clienteRepo);
+            f.ShowDialog();
+            LoadDashboardData();
+        }
+
+        // --- MÉTODO MODIFICADO PARA PASAR SETTINGS ---
+        private void OpenHistorial(object? sender, EventArgs e)
+        {
+            if (_facturaRepo == null || _settingRepo == null) return; // Verificamos ambos
+
+            // Pasamos ambos repositorios
+            using var f = new VentasForm(_facturaRepo, _settingRepo);
+            f.ShowDialog();
+            LoadDashboardData();
+        }
+
+        private void OpenClientes(object? sender, EventArgs e)
         {
             if (_clienteRepo == null) return;
             using var f = new ClientesForm(_clienteRepo);
             f.ShowDialog();
+            LoadDashboardData();
         }
-        void OpenItems()
+
+        private void OpenItems(object? sender, EventArgs e)
         {
-            if (_item_repo == null) return;
-            using var f = new ItemsForm(_item_repo);
+            if (_itemRepo == null || _settingRepo == null || _user == null) return;
+            using var f = new ItemsForm(_itemRepo, _settingRepo, _user);
             f.ShowDialog();
+            LoadDashboardData();
         }
-        void OpenFacturacion()
+
+        private void OpenUsuarios(object? sender, EventArgs e)
         {
-            if (_facturaService == null || _item_repo == null || _clienteRepo == null) return;
-            using var f = new FacturacionForm(_facturaService, _item_repo, _clienteRepo);
-            f.ShowDialog();
+            if (_usuarioRepo == null || _user == null) return;
+            using var f = new UsuariosForm(_usuarioRepo, _user.UsuarioId);
+            var result = f.ShowDialog();
+            if (result == DialogResult.Abort)
+            {
+                IsLogout = true;
+                this.Close();
+            }
         }
-        void OpenUsuarios()
-        {
-            if (_usuarioRepo == null) return;
-            using var f = new UsuariosForm(_usuarioRepo);
-            f.ShowDialog();
-        } // usa el campo inyectado
-        void OpenConfiguracion()
+
+        private void OpenConfiguracion(object? sender, EventArgs e)
         {
             if (_settingRepo == null) return;
             using var f = new ConfigForm(_settingRepo);
             f.ShowDialog();
-        } // usa el campo inyectado
+        }
 
-        // ----------------- Design-time preview helpers (moved out of Designer file) -----------------
-        /// <summary>
-        /// Crea tiles de vista previa para que el diseñador muestre la UI.
-        /// Se ejecuta sólo en modo DesignTime.
-        /// </summary>
-        private void CreateDesignTimeTiles_WithLayout()
+        private void Logout(object? sender, EventArgs e)
         {
-            if (tilesPanel == null) return;
-
-            // Evitar que el designer haga renders intermedios
-            tilesPanel.SuspendLayout();
-
-            try
+            if (MessageBox.Show("¿Seguro que desea cerrar sesión?", "Salir", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                tilesPanel.Controls.Clear();
-
-                for (int i = 0; i < 6; i++)
-                {
-                    var demoTile = new Panel
-                    {
-                        Width = 220,
-                        Height = 170,
-                        Margin = new Padding(12),
-                        BackColor = Color.White,
-                        BorderStyle = BorderStyle.FixedSingle
-                    };
-
-                    var table = new TableLayoutPanel { Dock = DockStyle.Fill, RowCount = 2, ColumnCount = 1 };
-                    table.RowStyles.Add(new RowStyle(SizeType.Absolute, 110));
-                    table.RowStyles.Add(new RowStyle(SizeType.Percent, 100));
-
-                    var imgLabel = new Label
-                    {
-                        Text = "(img)",
-                        Dock = DockStyle.Fill,
-                        TextAlign = ContentAlignment.MiddleCenter,
-                        AutoSize = false
-                    };
-
-                    var txtLabel = new Label
-                    {
-                        Text = i switch
-                        {
-                            0 => "Clientes",
-                            1 => "Items",
-                            2 => "Crear Factura",
-                            3 => "Venta Rápida",
-                            4 => "Usuarios",
-                            _ => "Configuración",
-                        },
-                        Dock = DockStyle.Fill,
-                        TextAlign = ContentAlignment.MiddleCenter,
-                        Font = new Font("Segoe UI", 9, FontStyle.Bold)
-                    };
-
-                    table.Controls.Add(imgLabel, 0, 0);
-                    table.Controls.Add(txtLabel, 0, 1);
-                    demoTile.Controls.Add(table);
-
-                    // Añadir al panel de tiles
-                    tilesPanel.Controls.Add(demoTile);
-                }
-            }
-            finally
-            {
-                // Forzar layout final y refresco en Designer
-                tilesPanel.ResumeLayout(true);
-                tilesPanel.PerformLayout();
-                tilesPanel.Refresh();
+                IsLogout = true;
+                this.Close();
             }
         }
 
+        private void StartClock()
+        {
+            System.Windows.Forms.Timer t = new System.Windows.Forms.Timer();
+            t.Interval = 1000;
+            t.Tick += (s, e) => {
+                lblClock.Text = DateTime.Now.ToString("dd MMM yyyy - hh:mm tt");
+                lblClock.Top = (pnlHeader.Height - lblClock.Height) / 2;
+            };
+            t.Start();
+        }
     }
 }

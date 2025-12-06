@@ -2,58 +2,90 @@ using System;
 using System.Windows.Forms;
 using QuickPOS;
 using QuickPOS.Data;
-using QuickPOS.Services;
 using QuickPOS.Models;
+using QuickPOS.Services;
+using QuickPOS.WinFormsApp.Forms;
 
 namespace QuickPOS.WinFormsApp
 {
     internal static class Program
     {
+        /// <summary>
+        ///  Punto de entrada principal para la aplicación.
+        /// </summary>
         [STAThread]
         static void Main()
         {
+            // 1. Configuración visual básica
             ApplicationConfiguration.Initialize();
 
-            // Probar conexión rápida (opcional, deja para debug)
+            // 2. Prueba rápida de conexión
             try
             {
                 using var cn = new Microsoft.Data.SqlClient.SqlConnection(Config.ConnectionString);
                 cn.Open();
-                Console.WriteLine("Conexión a SQL Server OK");
                 cn.Close();
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Error al abrir conexión: " + ex.Message);
+                MessageBox.Show($"Error crítico al conectar con la Base de Datos:\n{ex.Message}",
+                                "Error de Inicio", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
 
-            Console.WriteLine("Probando configuración...");
-            Console.WriteLine(Config.ConnectionString);
-
-            // Fábrica y repositorios (no abren conexión hasta que se llamen)
+            // 3. INYECCIÓN DE DEPENDENCIAS (El "Motor")
             var factory = new SqlConnectionFactory(Config.ConnectionString);
 
+            // Repositorios
             IItemRepository itemRepo = new ItemRepository(factory);
             IClienteRepository clienteRepo = new ClienteRepository(factory);
             IFacturaRepository facturaRepo = new FacturaRepository(factory);
-            IUsuarioRepository usuarioRepo = new UsuarioRepository(factory);      // para Auth / Usuarios
-            ISettingRepository settingRepo = new SettingRepository(factory);      // para Config (opcional)
+            IUsuarioRepository usuarioRepo = new UsuarioRepository(factory);
+            ISettingRepository settingRepo = new SettingRepository(factory);
 
             // Servicios
-            var facturaService = new FacturaService(facturaRepo, itemRepo); // mantengo la firma que tienes ahora
-
-            // AuthService ahora usa BD (UsuarioRepository)
+            var facturaService = new FacturaService(facturaRepo, itemRepo);
             var authService = new AuthService(usuarioRepo);
 
-            // Login
-            using var login = new LoginForm(authService);
-            var dr = login.ShowDialog();
-            if (dr != DialogResult.OK || login.AuthenticatedUser == null) return;
+            // 4. BUCLE DE LA APLICACIÓN (Para permitir Logout)
+            bool mantenerAbierto = true;
 
-            var user = login.AuthenticatedUser;
+            while (mantenerAbierto)
+            {
+                // Paso A: Mostrar Login
+                using (var login = new LoginForm(authService))
+                {
+                    var resultado = login.ShowDialog();
 
-            // Abrir MainForm con dependencias (mantengo la firma actual de MainForm)
-            Application.Run(new MainForm(user, facturaService, clienteRepo, itemRepo, usuarioRepo, settingRepo));
+                    // Si el usuario cierra el login o cancela, cerramos la app.
+                    if (resultado != DialogResult.OK || login.AuthenticatedUser == null)
+                    {
+                        mantenerAbierto = false;
+                        break;
+                    }
+
+                    // Paso B: Si el login fue exitoso, abrimos el Dashboard
+                    var mainForm = new MainForm(
+                        login.AuthenticatedUser,
+                        facturaService,
+                        clienteRepo,
+                        itemRepo,
+                        usuarioRepo,
+                        settingRepo,
+                        facturaRepo // <--- ¡Importante! Agregado para el Historial de Ventas
+                    );
+
+                    Application.Run(mainForm);
+
+                    // Paso C: Al cerrar el Dashboard, verificamos por qué se cerró
+                    if (!mainForm.IsLogout)
+                    {
+                        // Si NO fue un logout voluntario (dio a la X), cerramos el bucle.
+                        mantenerAbierto = false;
+                    }
+                    // Si FUE un logout (IsLogout == true), el bucle se repite y vuelve al Login.
+                }
+            }
         }
     }
 }

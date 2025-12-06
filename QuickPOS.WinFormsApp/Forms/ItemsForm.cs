@@ -1,105 +1,184 @@
 ﻿using System;
+using System.Drawing;
+using System.Linq; // <--- NECESARIO PARA EL FILTRO (Where)
 using System.Windows.Forms;
-using System.Linq;
 using QuickPOS.Data;
 using QuickPOS.Models;
 
-namespace QuickPOS.WinFormsApp
+namespace QuickPOS.WinFormsApp.Forms
 {
-    public class ItemsForm : Form
+    public partial class ItemsForm : Form
     {
         private readonly IItemRepository _repo;
-        private DataGridView grid;
+        private readonly ISettingRepository _settings;
+        private readonly User _user;
 
-        public ItemsForm(IItemRepository repo)
+        // Constructor 1 (Diseñador)
+        public ItemsForm()
+        {
+            InitializeComponent();
+        }
+
+        // Constructor 2 (Real)
+        public ItemsForm(IItemRepository repo, ISettingRepository settings, User user) : this()
         {
             _repo = repo ?? throw new ArgumentNullException(nameof(repo));
-            Text = "Items";
-            Width = 800; Height = 500; StartPosition = FormStartPosition.CenterParent;
-            Initialize();
+            _settings = settings ?? throw new ArgumentNullException(nameof(settings));
+            _user = user ?? throw new ArgumentNullException(nameof(user));
+
+            SetupEvents();
         }
 
-        void Initialize()
+        private void SetupEvents()
         {
-            var tl = new TableLayoutPanel { Dock = DockStyle.Fill, RowCount = 2 };
-            tl.RowStyles.Add(new RowStyle(SizeType.Percent, 90));
-            tl.RowStyles.Add(new RowStyle(SizeType.Percent, 10));
+            btnAdd.Click += BtnAdd_Click;
+            btnEdit.Click += BtnEdit_Click;
+            btnDelete.Click += BtnDelete_Click;
+            btnClose.Click += (s, e) => this.Close();
+        }
 
-            grid = new DataGridView
-            {
-                Dock = DockStyle.Fill,
-                ReadOnly = true,
-                AllowUserToAddRows = false,
-                AutoGenerateColumns = false,
-                SelectionMode = DataGridViewSelectionMode.FullRowSelect
-            };
-
-            // Columnas explícitas (más control)
-            grid.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "ItemId", HeaderText = "Id", Width = 60 });
-            grid.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "Nombre", HeaderText = "Nombre", AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill });
-            grid.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "Precio", HeaderText = "Precio", Width = 120, DefaultCellStyle = { Format = "0.00" } });
-            grid.Columns.Add(new DataGridViewCheckBoxColumn { DataPropertyName = "Activo", HeaderText = "Activo", Width = 70 });
-
-            tl.Controls.Add(grid, 0, 0);
-
-            var panel = new FlowLayoutPanel { Dock = DockStyle.Fill, FlowDirection = FlowDirection.LeftToRight, Padding = new Padding(6) };
-            var btnAdd = new Button { Text = "Agregar", AutoSize = true }; btnAdd.Click += (_, __) => AddItem();
-            var btnEdit = new Button { Text = "Editar", AutoSize = true }; btnEdit.Click += (_, __) => EditItem();
-            var btnDelete = new Button { Text = "Eliminar", AutoSize = true }; btnDelete.Click += (_, __) => DeleteItem();
-            panel.Controls.Add(btnAdd); panel.Controls.Add(btnEdit); panel.Controls.Add(btnDelete);
-
-            tl.Controls.Add(panel, 0, 1);
-
-            Controls.Add(tl);
+        private void ItemsForm_Load(object sender, EventArgs e)
+        {
+            ConfigureGrid();
             LoadData();
+            AplicarPermisos();
         }
 
-        void LoadData()
+        private void AplicarPermisos()
         {
+            if (_user.Role != "Admin")
+            {
+                string permisoBorrar = _settings.Get("Permiso_BorrarItems");
+                string permisoEditar = _settings.Get("Permiso_EditarItems");
+
+                btnDelete.Enabled = (permisoBorrar == "True");
+                btnAdd.Enabled = (permisoEditar == "True");
+                btnEdit.Enabled = (permisoEditar == "True");
+
+                if (!btnDelete.Enabled) btnDelete.BackColor = Color.LightGray;
+                if (!btnAdd.Enabled)
+                {
+                    btnAdd.BackColor = Color.LightGray;
+                    btnEdit.BackColor = Color.LightGray;
+                }
+            }
+        }
+
+        private void ConfigureGrid()
+        {
+            dgvItems.AutoGenerateColumns = false;
+            dgvItems.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvItems.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvItems.MultiSelect = false;
+            dgvItems.RowHeadersVisible = false;
+            dgvItems.AllowUserToAddRows = false;
+            dgvItems.ReadOnly = true;
+            dgvItems.BackgroundColor = Color.White;
+            dgvItems.BorderStyle = BorderStyle.None;
+
+            dgvItems.EnableHeadersVisualStyles = false;
+            dgvItems.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dgvItems.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(24, 30, 54);
+            dgvItems.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            dgvItems.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 10, FontStyle.Bold);
+            dgvItems.ColumnHeadersHeight = 40;
+
+            dgvItems.DefaultCellStyle.Font = new Font("Segoe UI", 10);
+            dgvItems.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(248, 248, 248);
+            dgvItems.RowTemplate.Height = 35;
+
+            if (dgvItems.Columns.Count == 0)
+            {
+                dgvItems.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "ItemId", HeaderText = "ID", Width = 60 });
+                dgvItems.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "Nombre", HeaderText = "PRODUCTO" });
+                dgvItems.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "Precio", HeaderText = "PRECIO", DefaultCellStyle = new DataGridViewCellStyle { Format = "C2" }, Width = 120 });
+                dgvItems.Columns.Add(new DataGridViewCheckBoxColumn { DataPropertyName = "Activo", HeaderText = "ACTIVO", Width = 80 });
+            }
+        }
+
+        private void LoadData()
+        {
+            if (_repo == null) return;
+
             try
             {
+                // 1. Obtener todos los productos de la BD
                 var items = _repo.GetAll();
-                grid.DataSource = items;
+
+                // 2. FILTRAR SEGÚN ROL
+                if (_user.Role != "Admin")
+                {
+                    // Si es empleado, SOLO mostramos los Activos (Activo == true)
+                    items = items.Where(x => x.Activo).ToList();
+                }
+                // Si es Admin, no filtramos nada (ve los activos y los borrados)
+
+                dgvItems.DataSource = items;
+
+                // 3. ESTILO VISUAL: Pintar de gris los desactivados (Solo Admin lo verá)
+                PintarInactivos();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error cargando items: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error al cargar: " + ex.Message);
             }
         }
 
-        void AddItem()
+        // Método para cambiar el color de los productos "borrados"
+        private void PintarInactivos()
+        {
+            foreach (DataGridViewRow row in dgvItems.Rows)
+            {
+                if (row.DataBoundItem is Item item && !item.Activo)
+                {
+                    // Letra gris y cursiva para indicar que está inactivo
+                    row.DefaultCellStyle.ForeColor = Color.DarkGray;
+                    row.DefaultCellStyle.Font = new Font("Segoe UI", 10, FontStyle.Italic);
+                    row.DefaultCellStyle.SelectionForeColor = Color.LightGray;
+                }
+            }
+        }
+
+        private void BtnAdd_Click(object? sender, EventArgs e)
         {
             using var f = new AddEditItemForm(_repo);
             if (f.ShowDialog() == DialogResult.OK) LoadData();
         }
 
-        void EditItem()
+        private void BtnEdit_Click(object? sender, EventArgs e)
         {
-            if (grid.CurrentRow == null) { MessageBox.Show("Seleccione un item para editar.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information); return; }
-            var item = grid.CurrentRow.DataBoundItem as Item;
-            if (item == null) return;
-            using var f = new AddEditItemForm(_repo, item);
-            if (f.ShowDialog() == DialogResult.OK) LoadData();
+            if (dgvItems.CurrentRow?.DataBoundItem is Item item)
+            {
+                using var f = new AddEditItemForm(_repo, item);
+                if (f.ShowDialog() == DialogResult.OK) LoadData();
+            }
+            else MessageBox.Show("Selecciona un producto.");
         }
 
-        void DeleteItem()
+        private void BtnDelete_Click(object? sender, EventArgs e)
         {
-            if (grid.CurrentRow == null) { MessageBox.Show("Seleccione un item para eliminar.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information); return; }
-            var item = grid.CurrentRow.DataBoundItem as Item;
-            if (item == null) return;
-            var r = MessageBox.Show($"Eliminar item '{item.Nombre}'?", "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (r == DialogResult.Yes)
+            if (!btnDelete.Enabled) return;
+
+            if (dgvItems.CurrentRow?.DataBoundItem is Item item)
             {
-                try
+                // Cambiamos el mensaje dependiendo si ya está inactivo o no
+                string accion = item.Activo ? "eliminar (desactivar)" : "eliminar permanentemente"; // (En realidad el repo solo desactiva, pero el mensaje ayuda)
+
+                if (MessageBox.Show($"¿Estás seguro de {accion} '{item.Nombre}'?", "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                 {
-                    _repo.Delete(item.ItemId);
-                    LoadData();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error eliminando item: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    try
+                    {
+                        _repo.Delete(item.ItemId);
+                        LoadData();
+
+                        // Mensaje de éxito inteligente
+                        if (item.Activo)
+                            MessageBox.Show("Producto desactivado. Ya no aparecerá en ventas.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    catch (Exception ex) { MessageBox.Show("Error: " + ex.Message); }
                 }
             }
+            else MessageBox.Show("Selecciona un producto.");
         }
     }
 }

@@ -1,10 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.14.36705.20
+# Visual Studio Version 18
+VisualStudioVersion = 18.0.11222.15 d18.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuickPOS.ConsoleApp", "QuickPOS.ConsoleApp\QuickPOS.ConsoleApp.csproj", "{8209D131-8649-44B1-9FF5-398B9C5E0674}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuickPOS.WinFormsApp", "QuickPOS.WinFormsApp\QuickPOS.WinFormsApp.csproj", "{36906F78-D2E4-48AE-A045-E2B577EDC35D}"
 EndProject
 Global
@@ -13,10 +11,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{8209D131-8649-44B1-9FF5-398B9C5E0674}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8209D131-8649-44B1-9FF5-398B9C5E0674}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8209D131-8649-44B1-9FF5-398B9C5E0674}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8209D131-8649-44B1-9FF5-398B9C5E0674}.Release|Any CPU.Build.0 = Release|Any CPU
 		{36906F78-D2E4-48AE-A045-E2B577EDC35D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{36906F78-D2E4-48AE-A045-E2B577EDC35D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{36906F78-D2E4-48AE-A045-E2B577EDC35D}.Release|Any CPU.ActiveCfg = Release|Any CPU

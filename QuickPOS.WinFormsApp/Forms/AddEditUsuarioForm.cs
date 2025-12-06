@@ -1,90 +1,120 @@
 ﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 using QuickPOS.Data;
 using QuickPOS.Models;
 
-namespace QuickPOS.WinFormsApp
+namespace QuickPOS.WinFormsApp.Forms
 {
-    public class AddEditUsuarioForm : Form
+    public partial class AddEditUsuarioForm : Form
     {
         private readonly IUsuarioRepository _repo;
-        private readonly Usuario? _usuario;
-        TextBox txtUser, txtPass;
-        ComboBox cbRole;
-        Button btnSave, btnCancel;
+        private readonly Usuario? _usuarioToEdit;
 
-        public AddEditUsuarioForm(IUsuarioRepository repo, Usuario? usuario = null)
+        private TextBox txtUser, txtPass, txtEmail;
+        private ComboBox cmbRole;
+        private Button btnSave, btnCancel;
+        private Label lblTitle;
+
+        public AddEditUsuarioForm(IUsuarioRepository repo, Usuario? u = null)
         {
-            _repo = repo ?? throw new ArgumentNullException(nameof(repo));
-            _usuario = usuario;
-            Text = usuario == null ? "Agregar Usuario" : "Editar Usuario";
-            Width = 420; Height = 220; StartPosition = FormStartPosition.CenterParent;
-            Initialize();
+            _repo = repo;
+            _usuarioToEdit = u;
+            InitializeCustomComponent();
+            LoadData();
         }
 
-        void Initialize()
+        private void LoadData()
         {
-            var tl = new TableLayoutPanel { Dock = DockStyle.Fill, ColumnCount = 2, RowCount = 3, Padding = new Padding(8) };
-            tl.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 30));
-            tl.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 70));
-
-            tl.RowStyles.Add(new RowStyle(SizeType.Absolute, 40));
-            tl.RowStyles.Add(new RowStyle(SizeType.Absolute, 40));
-            tl.RowStyles.Add(new RowStyle(SizeType.Absolute, 40));
-
-            tl.Controls.Add(new Label { Text = "Usuario:", TextAlign = System.Drawing.ContentAlignment.MiddleRight, Dock = DockStyle.Fill }, 0, 0);
-            txtUser = new TextBox { Dock = DockStyle.Fill }; tl.Controls.Add(txtUser, 1, 0);
-
-            tl.Controls.Add(new Label { Text = "Contraseña:", TextAlign = System.Drawing.ContentAlignment.MiddleRight, Dock = DockStyle.Fill }, 0, 1);
-            txtPass = new TextBox { Dock = DockStyle.Fill }; tl.Controls.Add(txtPass, 1, 1);
-
-            tl.Controls.Add(new Label { Text = "Rol:", TextAlign = System.Drawing.ContentAlignment.MiddleRight, Dock = DockStyle.Fill }, 0, 2);
-            cbRole = new ComboBox { Dock = DockStyle.Fill, DropDownStyle = ComboBoxStyle.DropDownList };
-            cbRole.Items.AddRange(new[] { "Admin", "Employee" }); cbRole.SelectedIndex = 1;
-            tl.Controls.Add(cbRole, 1, 2);
-
-            var btnPanel = new FlowLayoutPanel { Dock = DockStyle.Bottom, FlowDirection = FlowDirection.RightToLeft, Height = 40, Padding = new Padding(8) };
-            btnSave = new Button { Text = "Guardar" }; btnSave.Click += BtnSave_Click;
-            btnCancel = new Button { Text = "Cancelar" }; btnCancel.Click += (_, __) => { DialogResult = DialogResult.Cancel; Close(); };
-            btnPanel.Controls.Add(btnSave); btnPanel.Controls.Add(btnCancel);
-
-            Controls.Add(tl); Controls.Add(btnPanel);
-
-            if (_usuario != null)
+            if (_usuarioToEdit != null)
             {
-                txtUser.Text = _usuario.Username;
-                txtPass.Text = _usuario.PasswordHash;
-                cbRole.SelectedItem = _usuario.Role;
+                lblTitle.Text = "Editar Usuario";
+                txtUser.Text = _usuarioToEdit.Username;
+                txtUser.Enabled = false; // No permitir cambiar el username (id único)
+                txtEmail.Text = _usuarioToEdit.Email;
+                cmbRole.SelectedItem = _usuarioToEdit.Role;
+                txtPass.PlaceholderText = "(Dejar en blanco para no cambiar)";
+            }
+            else
+            {
+                lblTitle.Text = "Nuevo Usuario";
+                cmbRole.SelectedIndex = 1; // Employee por defecto
             }
         }
 
         private void BtnSave_Click(object? sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtUser.Text) || string.IsNullOrWhiteSpace(txtPass.Text))
-            {
-                MessageBox.Show("Usuario y contraseña requeridos.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            var u = new Usuario
-            {
-                UsuarioId = _usuario?.UsuarioId ?? 0,
-                Username = txtUser.Text.Trim(),
-                PasswordHash = txtPass.Text.Trim(), // ideal: hash
-                Role = cbRole.SelectedItem?.ToString() ?? "Employee"
-            };
+            if (string.IsNullOrWhiteSpace(txtUser.Text)) { MessageBox.Show("Usuario requerido"); return; }
+            if (_usuarioToEdit == null && string.IsNullOrWhiteSpace(txtPass.Text)) { MessageBox.Show("Contraseña requerida"); return; }
 
             try
             {
-                if (_usuario == null) _repo.Create(u);
-                else _repo.Update(u);
+                if (_usuarioToEdit == null)
+                {
+                    var u = new Usuario
+                    {
+                        Username = txtUser.Text.Trim(),
+                        PasswordHash = txtPass.Text.Trim(), // En producción usar Hash
+                        Role = cmbRole.SelectedItem.ToString(),
+                        Email = txtEmail.Text.Trim()
+                    };
+                    _repo.Create(u);
+                }
+                else
+                {
+                    _usuarioToEdit.Role = cmbRole.SelectedItem.ToString();
+                    _usuarioToEdit.Email = txtEmail.Text.Trim();
+                    if (!string.IsNullOrWhiteSpace(txtPass.Text))
+                        _usuarioToEdit.PasswordHash = txtPass.Text.Trim();
+
+                    _repo.Update(_usuarioToEdit);
+                }
                 DialogResult = DialogResult.OK;
                 Close();
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error guardando usuario: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            catch (Exception ex) { MessageBox.Show("Error: " + ex.Message); }
+        }
+
+        private void InitializeCustomComponent()
+        {
+            this.Size = new Size(400, 420);
+            this.StartPosition = FormStartPosition.CenterParent;
+            this.FormBorderStyle = FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
+            this.BackColor = Color.White;
+
+            lblTitle = new Label { Text = "Usuario", Font = new Font("Segoe UI", 16, FontStyle.Bold), Location = new Point(20, 20), AutoSize = true, ForeColor = Color.MidnightBlue };
+            this.Controls.Add(lblTitle);
+
+            // Usuario
+            this.Controls.Add(new Label { Text = "Nombre de Usuario *", Location = new Point(25, 70), AutoSize = true });
+            txtUser = new TextBox { Location = new Point(25, 90), Width = 330, Font = new Font("Segoe UI", 11) };
+            this.Controls.Add(txtUser);
+
+            // Rol
+            this.Controls.Add(new Label { Text = "Rol", Location = new Point(25, 130), AutoSize = true });
+            cmbRole = new ComboBox { Location = new Point(25, 150), Width = 330, Font = new Font("Segoe UI", 11), DropDownStyle = ComboBoxStyle.DropDownList };
+            cmbRole.Items.AddRange(new object[] { "Admin", "Employee" });
+            this.Controls.Add(cmbRole);
+
+            // Email
+            this.Controls.Add(new Label { Text = "Correo (Recuperación)", Location = new Point(25, 190), AutoSize = true });
+            txtEmail = new TextBox { Location = new Point(25, 210), Width = 330, Font = new Font("Segoe UI", 11) };
+            this.Controls.Add(txtEmail);
+
+            // Password
+            this.Controls.Add(new Label { Text = "Contraseña", Location = new Point(25, 250), AutoSize = true });
+            txtPass = new TextBox { Location = new Point(25, 270), Width = 330, Font = new Font("Segoe UI", 11), UseSystemPasswordChar = true };
+            this.Controls.Add(txtPass);
+
+            // Botones
+            btnSave = new Button { Text = "Guardar", BackColor = Color.FromArgb(0, 120, 215), ForeColor = Color.White, FlatStyle = FlatStyle.Flat, Size = new Size(120, 40), Location = new Point(140, 320) };
+            btnSave.Click += BtnSave_Click;
+            this.Controls.Add(btnSave);
+
+            btnCancel = new Button { Text = "Cancelar", BackColor = Color.WhiteSmoke, FlatStyle = FlatStyle.Flat, Size = new Size(100, 40), Location = new Point(270, 320) };
+            btnCancel.Click += (s, e) => Close();
+            this.Controls.Add(btnCancel);
         }
     }
 }

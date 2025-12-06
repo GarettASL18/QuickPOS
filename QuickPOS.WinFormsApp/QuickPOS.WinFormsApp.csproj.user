@@ -4,7 +4,7 @@
     <Compile Update="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Forms\AddClientForm.cs">
+    <Compile Update="Forms\AddEditClienteForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\AddEditItemForm.cs">
@@ -17,6 +17,9 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\ConfigForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\DetalleVentaForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\FacturacionForm.cs">
@@ -34,11 +37,22 @@
     <Compile Update="Forms\PickItemForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Forms\QuickSaleForm.cs">
+    <Compile Update="Forms\RecoveryForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Forms\UsuariosFrom.cs">
+    <Compile Update="Forms\RoundedPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Forms\UsuariosForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forms\VentasForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="Forms\RoundedPanel.cs">
+      <SubType>Component</SubType>
+    </None>
   </ItemGroup>
 </Project>
